@@ -21,4 +21,8 @@ public class Student {
 	private long rollNo;
 	private String name;
 	private String desc;
+	private float scienceMks;
+	private float langMks;
+	private float sstMks;
+	private float perc;
 }
