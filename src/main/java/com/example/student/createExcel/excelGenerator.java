@@ -19,7 +19,7 @@ import com.example.student.model.Student;
 
 public class excelGenerator {
 	public static ByteArrayInputStream studentToExcel(List<Student> students) throws IOException{
-		String[] columns = {"Roll Number","Name","Description","Science Marks","Language Marks","Social Science Marks","Percentage"};
+		String[] columns = {"Roll Number","Name","Description","Science Marks","Language Marks","Social Science Marks","Percentage","Grade"};
 		try (
 				Workbook workBook =new XSSFWorkbook();
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -28,12 +28,14 @@ public class excelGenerator {
 			
 			Font headerFont = workBook.createFont();
 			headerFont.setBold(true);
-			headerFont.setColor(IndexedColors.BLUE.getIndex());
+			headerFont.setColor(IndexedColors.DARK_RED.getIndex());
 			
 			CellStyle headerCellStyle = workBook.createCellStyle();
 			headerCellStyle.setFont(headerFont);
 			//Row for header-->
 			Row headerRow = sheet.createRow(0);
+			
+			
 			
 			//header-->
 			for(int col=0; col<columns.length;col++) {
@@ -53,6 +55,7 @@ public class excelGenerator {
 				row.createCell(4).setCellValue(stud.getLangMks());
 				row.createCell(5).setCellValue(stud.getSstMks());
 				row.createCell(6).setCellValue(stud.getPerc());
+				row.createCell(7).setCellValue(stud.getGrade());
 			}
 			
 			workBook.write(out);

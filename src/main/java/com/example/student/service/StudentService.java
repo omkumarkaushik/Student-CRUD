@@ -30,7 +30,22 @@ public class StudentService {
 	public void calculatePercentage(Student student) {
 		float sum = student.getLangMks()+student.getScienceMks()+student.getSstMks();
 		float percentage = 100*sum/300;
+		char grade = calculateGrade(percentage);
+		student.setGrade(grade);
 		student.setPerc(percentage);
+	}
+	
+	public char calculateGrade(float percentage) {
+		if(percentage<=100 && percentage>=85)
+			return 'A';
+		else if (percentage<85 && percentage>=70)
+			return 'B';
+		else if (percentage<70 && percentage>=50)
+			return 'C';
+		else if (percentage<50 && percentage>=35)
+			return 'D';
+		else 
+			return 'F';
 	}
 	
 	public String deleteStudent(long rollNo) {

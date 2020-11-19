@@ -25,4 +25,5 @@ public class Student {
 	private float langMks;
 	private float sstMks;
 	private float perc;
+	private char grade;
 }
